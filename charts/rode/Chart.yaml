@@ -1,0 +1,13 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for rode
+name: rode
+version: 0.1.0
+dependencies:
+  - name: grafeas
+    version: 0.1.0
+    condition: grafeas.enabled
+  - name: opa
+    repository: 
+    version: 1.14.4
+    condition: opa.enabled
