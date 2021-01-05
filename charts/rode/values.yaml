@@ -22,7 +22,7 @@ debug: false
 
 image:
   repository: "ghcr.io/rode/rode"
-  tag: "v0.0.2"
+  tag: "v0.0.3"
   pullPolicy: IfNotPresent
 
 extraEnv: []
