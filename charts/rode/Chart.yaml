@@ -4,10 +4,11 @@ description: A Helm chart for rode
 name: rode
 version: 0.1.0
 dependencies:
-  - name: grafeas
-    version: 0.1.0
+  - name: grafeas-elasticsearch
+    repository: https://rode.github.io/charts
+    version: 0.0.1
     condition: grafeas.enabled
   - name: opa
-    repository: 
-    version: 1.14.4
+    repository:
+    version: 0.1.0-local
     condition: opa.enabled
