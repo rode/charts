@@ -17,7 +17,7 @@ data:
 {{- end }}
         cors_allowed_origins:
         # - "http://example.net"
-      storage_type: {{ .Values.grafeas.storageType }}
+      storage_type: elasticsearch
       elasticsearch:
         url: {{ .Values.grafeas.elasticsearch.url }}
         username: {{ .Values.grafeas.elasticsearch.username }}

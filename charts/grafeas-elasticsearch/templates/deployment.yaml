@@ -45,12 +45,6 @@ spec:
           - name: certificates
             mountPath: /certificates
 {{- end }}
-{{- if .Values.persistence.enabled }}
-{{- if eq .Values.persistence.storageType "embedded" }}
-          - name: persistent-volume
-            mountPath: /data
-{{- end }}
-{{- end }}
           resources:
 {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:
@@ -76,13 +70,6 @@ spec:
         - name: certificates
           secret:
             secretName: {{ .Values.certificates.name }}
-{{- end }}
-{{- if .Values.persistence.enabled }}
-{{- if eq .Values.persistence.storageType "embedded" }}
-        - name: persistent-volume
-          persistentVolumeClaim:
-            claimName: {{ .Values.persistence.claimName }}
-{{- end}}
 {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
