@@ -22,7 +22,7 @@ spec:
       initContainers:
         - name: wait-for-elasticsearch
           {{- if .Values.curl.securityContext }}
-          {{-with .Values.curl.securityContext }}
+          {{- with .Values.curl.securityContext }}
           securityContext:
 {{ toYaml . | indent 12 }}
           {{- end }}
@@ -37,7 +37,7 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           {{- if .Values.grafeas.securityContext }}
-          {{-with .Values.grafeas.securityContext }}
+          {{- with .Values.grafeas.securityContext }}
           securityContext:
 {{ toYaml . | indent 12 }}
           {{- end }}
