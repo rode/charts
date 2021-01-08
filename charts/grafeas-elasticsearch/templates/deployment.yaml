@@ -21,6 +21,12 @@ spec:
     spec:
       initContainers:
         - name: wait-for-elasticsearch
+          {{- if .Values.curl.securityContext }}
+          {{-with .Values.curl.securityContext }}
+          securityContext:
+{{ toYaml . | indent 12 }}
+          {{- end }}
+          {{- end }}
           image: curlimages/curl:7.73.0
           imagePullPolicy: IfNotPresent
           command:
@@ -30,6 +36,12 @@ spec:
               until curl --output /dev/null --silent --fail --max-time 2 {{ .Values.grafeas.elasticsearch.url }}/_cluster/health?wait_for_status=yellow; do sleep 1; done;
       containers:
         - name: {{ .Chart.Name }}
+          {{- if .Values.grafeas.securityContext }}
+          {{-with .Values.grafeas.securityContext }}
+          securityContext:
+{{ toYaml . | indent 12 }}
+          {{- end }}
+          {{- end }}
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["/grafeas-server"]
