@@ -9,6 +9,5 @@ dependencies:
     version: 0.0.1
     condition: grafeas.enabled
   - name: opa
-    repository:
     version: 0.1.0-local
     condition: opa.enabled
