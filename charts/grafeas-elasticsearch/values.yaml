@@ -73,6 +73,8 @@ grafeas:
     password:
     refresh: "true"
 
+initContainer: {}
+
 elasticsearch:
   enabled: true
   extraInitContainers:
