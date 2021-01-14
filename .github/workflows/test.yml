@@ -1,0 +1,50 @@
+name: Test Charts
+
+on:
+  push:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.2
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      
+      - name: Install helm repos
+        run: |
+          helm repo add elastic https://helm.elastic.co
+          helm repo add rode https://rode.github.io/charts
+          helm repo update
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@v2.0.1
+      
+      - name: Check for changes
+        id: list-changed
+        run: |
+          changed=$(ct list-changed --target-branch main)
+          if [[ -n "$changed" ]]; then
+            echo "::set-output name=changed::true"
+          fi
+
+      - name: Run chart-testing (lint)
+        run: ct lint --all
+
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.0.0
+        if: steps.list-changed.outputs.changed == 'true'
+
+      - name: Run chart-testing (install)
+        run: ct install --target-branch main

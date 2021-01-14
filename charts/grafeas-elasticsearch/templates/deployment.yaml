@@ -21,8 +21,8 @@ spec:
     spec:
       initContainers:
         - name: wait-for-elasticsearch
-          {{- if .Values.curl.securityContext }}
-          {{- with .Values.curl.securityContext }}
+          {{- if .Values.initContainer.securityContext }}
+          {{- with .Values.initContainer.securityContext }}
           securityContext:
 {{ toYaml . | indent 12 }}
           {{- end }}
