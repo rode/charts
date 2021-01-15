@@ -5,7 +5,7 @@ type: application
 maintainers:
   - name: Liatrio
     email: rode@liatrio.com
-version: 0.0.2
+version: 0.0.3
 appVersion: 0.1.0
 dependencies:
   - name: elasticsearch
