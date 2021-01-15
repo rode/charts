@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/liatrio/rode-collector-harbor
-  pullPolicy: Never
+  repository: ghcr.io/rode/rode-collector-harbor
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
