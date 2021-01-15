@@ -1,9 +1,9 @@
 dependencies:
 - name: grafeas-elasticsearch
   repository: https://rode.github.io/charts
-  version: 0.0.1
+  version: 0.0.3
 - name: opa
   repository: ""
   version: 0.1.0-local
-digest: sha256:a8e476dc19f0361cc694dac92f4c59d2a8cec120523d9cdf99b6ae730ef97439
-generated: "2021-01-14T12:15:15.887867-08:00"
+digest: sha256:34296e104c14bc0801d1bd78f18d9898e9a59c5f77c34907b9239e69c127bae6
+generated: "2021-01-14T18:13:47.364531-08:00"
