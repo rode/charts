@@ -4,14 +4,13 @@ lint:
 	docker run --rm -v $$(pwd):/rode-charts/ -w /rode-charts quay.io/helmpack/chart-testing:v3.3.1 sh -c "helm repo add elastic https://helm.elastic.co; helm repo add rode https://rode.github.io/charts; helm repo update; ct lint --all"
 
 install-test-main:
-	ct install --charts charts/grafeas-elasticsearch,charts/rode
+	ct install --target-branch main --excluded-charts rode-collector-harbor
 
 install-test-collectors-setup:
-	kubectl create namespace rode-test
-	helm install -n rode-test rode-test ./charts/rode -f ./charts/rode/ci/test-values.yaml --wait
+	helm install -n rode-test --create-namespace rode-test ./charts/rode -f ./charts/rode/ci/test-values.yaml --wait
 
 install-test-collectors:
-	ct install --charts charts/rode-collector-*
+	ct install --target-branch main --excluded-charts rode,grafeas-elasticsearch
 
 install-test-collectors-teardown:
 	helm uninstall -n rode-test rode-test
