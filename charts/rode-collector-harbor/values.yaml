@@ -5,9 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/rode/rode-collector-harbor
+  repository: ghcr.io/rode/collector-harbor
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
 imagePullSecrets: []
@@ -77,3 +76,12 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+rode:
+  host: localhost:50051
+  insecure: false
+
+harbor:
+  host: localhost:8080
+  username: ""
+  password: ""
