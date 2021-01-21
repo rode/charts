@@ -24,7 +24,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "rode-collector-harbor.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -33,6 +32,12 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - "--rode-host={{ .Values.rode.host }}"
+            - "--rode-insecure={{ .Values.rode.insecure }}"
+            - "--harbor-host={{ .Values.harbor.host }}"
+            - "--harbor-username={{ .Values.harbor.username }}"
+            - "--harbor-password={{ .Values.harbor.password }}"
           ports:
             - name: http
               containerPort: 8080
