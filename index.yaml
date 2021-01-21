@@ -3,6 +3,24 @@ entries:
   grafeas-elasticsearch:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2021-01-21T22:15:04.887646956Z"
+    dependencies:
+    - condition: elasticsearch.enabled
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.10.1
+    description: Grafeas with Elasticsearch backend
+    digest: 5f15210d85e55d8fba09c9afe963069507699a8d739876b05987c24ed5fe474a
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: grafeas-elasticsearch
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/grafeas-elasticsearch-0.0.4/grafeas-elasticsearch-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2021-01-15T02:12:18.785927728Z"
     dependencies:
     - condition: elasticsearch.enabled
