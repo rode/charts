@@ -3,6 +3,24 @@ entries:
   grafeas-elasticsearch:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2021-01-22T06:03:00.559858057Z"
+    dependencies:
+    - condition: elasticsearch.enabled
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.10.1
+    description: Grafeas with Elasticsearch backend
+    digest: e84c27b4c916974a0f0b76c10c48010bd6b9f6cd0bfd766f92109394be48595d
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: grafeas-elasticsearch
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/grafeas-elasticsearch-0.0.6/grafeas-elasticsearch-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2021-01-21T22:15:04.887646956Z"
     dependencies:
     - condition: elasticsearch.enabled
@@ -55,6 +73,27 @@ entries:
   rode:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2021-01-22T06:03:00.728161573Z"
+    dependencies:
+    - condition: grafeas.enabled
+      name: grafeas-elasticsearch
+      repository: https://rode.github.io/charts
+      version: 0.0.3
+    - condition: opa.enabled
+      name: opa
+      repository: ""
+      version: 0.1.0-local
+    description: A Helm chart for rode
+    digest: aa5c94dfc4b2b3635d9999d9d49bc7298d9a4a10bdd3b4fc07db05e55f9314c8
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-0.0.4/rode-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2021-01-15T02:37:41.478300277Z"
     dependencies:
     - condition: grafeas.enabled
@@ -74,4 +113,18 @@ entries:
     urls:
     - https://github.com/rode/charts/releases/download/rode-0.0.3/rode-0.0.3.tgz
     version: 0.0.3
+  rode-collector-harbor:
+  - apiVersion: v2
+    appVersion: v0.0.2
+    created: "2021-01-22T06:03:00.912796456Z"
+    description: A Helm chart for the Rode Harbor Collector. Meant to be deployed alongside Rode
+    digest: 1ae495cfe7dbfeb040764369ca7e8841b10ebfa03e46c09105b2154db35fda0e
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-harbor
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-harbor-0.0.2/rode-collector-harbor-0.0.2.tgz
+    version: 0.0.2
 generated: "2021-01-11T23:30:16.904724982Z"
