@@ -44,6 +44,12 @@ spec:
             {{- if .Values.harbor.password }}
             - "--harbor-password={{ .Values.harbor.password }}"
             {{- end }}
+            {{- if .Values.harbor.insecure }}
+            - "--harbor-insecure={{ .Values.harbor.insecure }}"
+          {{- end }}
+            {{- if .Values.debug }}
+            - "--debug={{ .Values.debug }}"
+          {{- end }}
           ports:
             - name: http
               containerPort: 8080

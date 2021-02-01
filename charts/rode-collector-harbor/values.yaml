@@ -77,6 +77,8 @@ tolerations: []
 
 affinity: {}
 
+debug: false
+
 rode:
   host: localhost:50051
   insecure: false
@@ -85,3 +87,4 @@ harbor:
   host: localhost:8080
   username: ""
   password: ""
+  insecure: false
