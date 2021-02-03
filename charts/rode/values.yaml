@@ -17,6 +17,7 @@ grafeasHost: "grafeas-server:8080"
 
 opa:
   enabled: true
+  host: http://rode-opa:8181
 
 debug: false
 
