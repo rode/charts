@@ -29,10 +29,15 @@ image:
 extraEnv: []
 
 container:
-  port: 50051
+  grpcPort: 50051
+  httpPort: 50052
 service:
-  type: ClusterIP
-  port: 50051
+  grpc:
+    type: ClusterIP
+    port: 50051
+  http:
+    type: ClusterIP
+    port: 50052
 
 tolerations: []
 affinity: {}

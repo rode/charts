@@ -13,8 +13,15 @@ spec:
     app: {{ template "rode.name" . }}
     release: {{ .Release.Name }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.container.port }}
+    - port: {{ .Values.service.grpc.port }}
+      targetPort: {{ .Values.container.grpcPort }}
+      {{- if and (eq .Values.service.type "NodePort") (.Values.service.nodePort) }}
+      nodePort: {{ .Values.service.nodePort }}
+      {{- end }}
+      protocol: TCP
+      name: rode
+    - port: {{ .Values.service.http.port }}
+      targetPort: {{ .Values.container.httpPort }}
       {{- if and (eq .Values.service.type "NodePort") (.Values.service.nodePort) }}
       nodePort: {{ .Values.service.nodePort }}
       {{- end }}
