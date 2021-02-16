@@ -45,7 +45,6 @@ spec:
             - "--http-port={{ .Values.container.httpPort }}"
             - "--grpc-port={{ .Values.container.grpcPort }}"
             - "--grafeas-host={{ .Values.grafeasHost }}"
-            - "--opa-host={{ .Values.opa.host }}"
             - "--debug={{ .Values.debug }}"
           ports:
             - containerPort: {{ .Values.container.httpPort }}
