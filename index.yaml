@@ -73,6 +73,27 @@ entries:
   rode:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2021-02-17T15:46:43.052459452Z"
+    dependencies:
+    - condition: grafeas.enabled
+      name: grafeas-elasticsearch
+      repository: https://rode.github.io/charts
+      version: 0.0.3
+    - condition: opa.enabled
+      name: opa
+      repository: ""
+      version: 0.1.0-local
+    description: A Helm chart for rode
+    digest: fca6e1ffdae14852bdf8b34f25cdc2556adc93586d47080f6fb5a744d223dcf8
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-0.0.5/rode-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2021-01-22T06:03:00.728161573Z"
     dependencies:
     - condition: grafeas.enabled
