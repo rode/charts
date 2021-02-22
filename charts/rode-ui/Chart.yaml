@@ -1,5 +1,10 @@
 apiVersion: v2
 name: rode-ui
+
+maintainers:
+  - name: Liatrio
+    email: rode@liatrio.com
+
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
