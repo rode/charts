@@ -10,10 +10,10 @@ rode:
 
 image:
   #Override once image is created
-  repository: nginx
+  repository: ghcr.io/rode/ui
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: v0.0.1
 
 imagePullSecrets: []
 nameOverride: ""
