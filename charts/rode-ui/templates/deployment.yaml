@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: RODE_URL
-            value: {{ .Values.service.targetPort }}
+            value: "{{ .Values.service.targetPort }}"
           ports:
             - name: http
               containerPort: 80
