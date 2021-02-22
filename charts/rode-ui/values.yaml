@@ -9,7 +9,7 @@ rode:
   url: http://rode:50052
 
 image:
-  #Override once image is created
+  # Override once image is created
   repository: ghcr.io/rode/ui
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
