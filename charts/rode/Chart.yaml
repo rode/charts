@@ -5,7 +5,7 @@ maintainers:
   - name: Liatrio
     email: rode@liatrio.com
 version: 0.0.5
-appVersion: 0.0.1
+appVersion: 0.0.5
 dependencies:
   - name: grafeas-elasticsearch
     repository: https://rode.github.io/charts
