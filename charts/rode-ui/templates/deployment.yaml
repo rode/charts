@@ -34,19 +34,19 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: RODE_URL
-            value: "{{ .Values.service.targetPort }}"
+            value: "{{ .Values.rode.url }}"
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
