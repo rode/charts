@@ -6,7 +6,7 @@ replicaCount: 1
 
 rode:
   # App default is http://localhost:50052
-  url: http://rode:50051
+  url: http://rode:50052
 
 image:
   # Override once image is created
