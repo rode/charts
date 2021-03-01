@@ -200,4 +200,18 @@ entries:
     urls:
     - https://github.com/rode/charts/releases/download/rode-collector-harbor-0.0.2/rode-collector-harbor-0.0.2.tgz
     version: 0.0.2
+  rode-ui:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2021-03-01T23:52:28.229353853Z"
+    description: Web frontend for Rode
+    digest: ab8455066ec6e973241dcb6934791fb15188776f0d41676f4b2f080cb034dc1c
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-ui
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-ui-0.1.0/rode-ui-0.1.0.tgz
+    version: 0.1.0
 generated: "2021-01-11T23:30:16.904724982Z"
