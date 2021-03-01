@@ -1,0 +1,11 @@
+apiVersion: v2
+name: rode-ui
+
+maintainers:
+  - name: Liatrio
+    email: rode@liatrio.com
+
+description: Web frontend for Rode
+type: application
+version: 0.1.0
+appVersion: 0.1.0
