@@ -22,6 +22,9 @@ opa:
   enabled: true
   host: http://rode-opa:8181
 
+elasticsearch:
+  host: http://elasticsearch-master:9200
+
 debug: false
 
 image:
