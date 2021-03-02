@@ -1,9 +1,12 @@
 dependencies:
+- name: rode-ui
+  repository: https://rode.github.io/charts
+  version: 0.1.0
 - name: grafeas-elasticsearch
   repository: https://rode.github.io/charts
   version: 0.1.0
 - name: opa
   repository: ""
   version: 0.1.0-local
-digest: sha256:347906815108f1cfe4d08b3e9ee408c9e3f6e08ac0d3879e36402f5d38c4540c
-generated: "2021-03-02T14:16:36.999448-06:00"
+digest: sha256:3ab4f74aa086f4cb8eed6f525955b497b58a8549e078649c52b2877c62af7f5a
+generated: "2021-03-02T12:32:13.826357-08:00"
