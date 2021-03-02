@@ -5,8 +5,8 @@ type: application
 maintainers:
   - name: Liatrio
     email: rode@liatrio.com
-version: 0.0.7
-appVersion: 0.3.0
+version: 0.1.0
+appVersion: 0.4.0
 dependencies:
   - name: elasticsearch
     repository: https://helm.elastic.co
