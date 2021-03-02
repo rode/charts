@@ -5,5 +5,5 @@ dependencies:
 - name: opa
   repository: ""
   version: 0.1.0-local
-digest: sha256:80790f752cf1e68fb511df70e8ee445ce12a9639224d23447d3fb8539e003a59
-generated: "2021-02-22T09:30:36.161574-08:00"
+digest: sha256:347906815108f1cfe4d08b3e9ee408c9e3f6e08ac0d3879e36402f5d38c4540c
+generated: "2021-03-02T14:16:36.999448-06:00"
