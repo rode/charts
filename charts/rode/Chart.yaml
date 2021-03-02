@@ -14,7 +14,7 @@ dependencies:
   - name: grafeas-elasticsearch
     repository: https://rode.github.io/charts
     version: 0.1.0
-    condition: grafeas.enabled
+    condition: grafeas-elasticsearch.enabled
   - name: opa
     repository: ""
     version: 0.1.0-local

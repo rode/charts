@@ -6,8 +6,8 @@ rode-ui:
   enabled: true
 
 grafeas-elasticsearch:
+  enabled: true
   grafeas:
-    enabled: true
     container:
       port: 8080
     service:
@@ -16,7 +16,8 @@ grafeas-elasticsearch:
       username:
       password:
 
-grafeasHost: "grafeas-server:8080"
+grafeas:
+  host: "grafeas-server:8080"
 
 opa:
   enabled: true
