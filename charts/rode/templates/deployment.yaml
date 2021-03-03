@@ -36,7 +36,7 @@ spec:
             - "/bin/sh"
             - "-c"
             - |
-              until curl --output /dev/null --silent --fail --max-time 2 {{ .Values.grafeasHost }}/v1beta1/projects; do sleep 1; done;
+              until curl --output /dev/null --silent --fail --max-time 2 {{ .Values.grafeas.host }}/v1beta1/projects; do sleep 1; done;
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default $.Chart.AppVersion }}"
@@ -44,7 +44,8 @@ spec:
           args:
             - "--http-port={{ .Values.container.httpPort }}"
             - "--grpc-port={{ .Values.container.grpcPort }}"
-            - "--grafeas-host={{ .Values.grafeasHost }}"
+            - "--grafeas-host={{ .Values.grafeas.host }}"
+            - "--elasticsearch-host={{ .Values.elasticsearch.host }}"
             - "--debug={{ .Values.debug }}"
           ports:
             - containerPort: {{ .Values.container.httpPort }}
