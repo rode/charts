@@ -30,7 +30,6 @@ debug: false
 
 image:
   repository: "ghcr.io/rode/rode"
-  tag: "v0.0.5"
   pullPolicy: IfNotPresent
 
 extraEnv: []
