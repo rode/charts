@@ -45,6 +45,7 @@ spec:
             - "--http-port={{ .Values.container.httpPort }}"
             - "--grpc-port={{ .Values.container.grpcPort }}"
             - "--grafeas-host={{ .Values.grafeas.host }}"
+            - "--opa-host={{ .Values.opa.host }}"
             - "--elasticsearch-host={{ .Values.elasticsearch.host }}"
             - "--debug={{ .Values.debug }}"
           ports:
