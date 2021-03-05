@@ -6,7 +6,8 @@ This repository contains Helm charts for several tools in the Rode ecosystem.
 
 | Name | Chart | Project |
 | ---- | ----- | ------- |
-| Rode | [/charts/rode](https://github.com/rode/charts/tree/main/charts/rode) | [rode/rode](https://github.com/rode/rode) |
+| Rode | [/charts/rode](https://github.com/rode/charts/tree/main/charts/rode) | [rode/rode](https://github.com/rode/rode) |  
+| Rode UI | [/charts/rode-ui](https://github.com/rode/charts/tree/main/charts/rode-ui) | [rode/rode-ui](https://github.com/rode/rode-ui) |
 | Rode Harbor Collector | [/charts/rode-collector-harbor](https://github.com/rode/charts/tree/main/charts/rode-collector-harbor) | [rode/collector-harbor](https://github.com/rode/collector-harbor) |
 | Grafeas Elasticsearch | [/charts/grafeas-elasticsearch](https://github.com/rode/charts/tree/main/charts/grafeas-elasticsearch) | [rode/grafeas-elasticsearch](https://github.com/rode/grafeas-elasticsearch) |
 
