@@ -4,13 +4,13 @@ lint:
 	docker run --rm -v $$(pwd):/rode-charts/ -w /rode-charts quay.io/helmpack/chart-testing:v3.3.1 sh -c "helm repo add elastic https://helm.elastic.co; helm repo add rode https://rode.github.io/charts; helm repo update; ct lint --all"
 
 install-test-grafeas-elasticsearch:
-	ct install --target-branch main --charts grafeas-elasticsearch --helm-extra-args --timeout=10m
+	ct install --target-branch main --charts charts/grafeas-elasticsearch --helm-extra-args --timeout=10m
 
 install-test-rode:
-	ct install --target-branch main --charts rode --helm-extra-args --timeout=10m
+	ct install --target-branch main --charts charts/rode --helm-extra-args --timeout=10m
 
 install-test-rode-ui:
-	ct install --target-branch main --charts rode-ui --helm-extra-args --timeout=10m
+	ct install --target-branch main --charts charts/rode-ui --helm-extra-args --timeout=10m
 
 install-test-collectors-setup:
 	helm install -n rode-test --create-namespace rode-test ./charts/rode -f ./charts/rode/ci/test-values.yaml --wait
