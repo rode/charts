@@ -17,6 +17,7 @@ elasticsearch:
       cpu: "1000m"
       memory: "512M"
   # Request smaller persistent volumes.
+  clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
   volumeClaimTemplate:
     accessModes: ["ReadWriteOnce"]
     resources:
