@@ -3,6 +3,7 @@ grafeas:
     username: "test1234"
     password: "test1234"
 elasticsearch:
+  replicas: 1
   # Permit co-located instances for single node cluster.
   antiAffinity: "soft"
   # Shrink default JVM heap.
