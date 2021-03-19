@@ -16,6 +16,7 @@ grafeas-elasticsearch:
       limits:
         cpu: "1000m"
         memory: "512M"
+    clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
     # Request smaller persistent volumes.
     volumeClaimTemplate:
       accessModes: ["ReadWriteOnce"]
