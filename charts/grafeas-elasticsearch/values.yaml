@@ -3,7 +3,7 @@ replicaCount: 1
 secret:
   enabled: false
 
-## Grafeas image version
+## grafeas-elasticsearch image version
 image:
   repository: ghcr.io/rode
   name: grafeas-elasticsearch
