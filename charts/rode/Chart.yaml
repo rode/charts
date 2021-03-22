@@ -4,16 +4,16 @@ name: rode
 maintainers:
   - name: Liatrio
     email: rode@liatrio.com
-version: 0.1.1
-appVersion: 0.1.0
+version: 0.1.2
+appVersion: 0.1.1
 dependencies:
   - name: rode-ui
     repository: https://rode.github.io/charts
-    version: 0.1.0
+    version: 0.2.0
     condition: rode-ui.enabled
   - name: grafeas-elasticsearch
     repository: https://rode.github.io/charts
-    version: 0.1.0
+    version: 0.2.0
     condition: grafeas-elasticsearch.enabled
   - name: opa
     repository: ""
