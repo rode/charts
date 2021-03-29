@@ -1,0 +1,59 @@
+replicaCount: 1
+
+image:
+  repository: "ghcr.io/rode/collector-build"
+  pullPolicy: IfNotPresent
+  tag: ""
+
+imagePullSecrets: []
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+container:
+  grpcPort: 8082
+  httpPort: 8083
+service:
+  grpc:
+    type: ClusterIP
+    port: 8082
+  http:
+    type: ClusterIP
+    port: 8083
+
+debug: false
+
+rode:
+  host: rode:50051
+  insecure: false
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+
+resources:
+  limits:
+    cpu: 128m
+    memory: 64Mi
+  requests:
+    cpu: 64m
+    memory: 32Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

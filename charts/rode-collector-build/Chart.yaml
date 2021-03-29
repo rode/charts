@@ -1,0 +1,6 @@
+apiVersion: v2
+name: rode-collector-build
+description: A Helm chart for a generic Rode build collector. Meant to be deployed alongside Rode
+type: application
+version: 0.1.0
+appVersion: 0.1.0

@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "rode-collector-build.fullname" . }}
+  labels:
+  {{- include "rode-collector-build.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.grpc.port }}
+      targetPort: {{ .Values.container.grpcPort }}
+      {{- if and (eq .Values.service.grpc.type "NodePort") (.Values.service.grpc.nodePort) }}
+      nodePort: {{ .Values.service.grpc.nodePort }}
+      {{- end }}
+      protocol: TCP
+      name: rode-collector-build-grpc
+    - port: {{ .Values.service.http.port }}
+      targetPort: {{ .Values.container.httpPort }}
+      {{- if and (eq .Values.service.http.type "NodePort") (.Values.service.http.nodePort) }}
+      nodePort: {{ .Values.service.http.nodePort }}
+      {{- end }}
+      protocol: TCP
+      name: rode-collector-build-http
+  selector:
+    app: {{ template "rode-collector-build.name" . }}
+    release: {{ .Release.Name }}

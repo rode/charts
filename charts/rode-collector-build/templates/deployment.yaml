@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "rode-collector-build.fullname" . }}
+  labels:
+    {{- include "rode-collector-build.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "rode-collector-build.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "rode-collector-build.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.securityContext }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          {{- if .Values.securityContext }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          {{- end }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion) ) }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - "--http-port={{ .Values.container.httpPort }}"
+            - "--grpc-port={{ .Values.container.grpcPort }}"
+            - "--rode-host={{ .Values.rode.host }}"
+            {{- if .Values.rode.insecure }}
+            - "--rode-insecure={{ .Values.rode.insecure }}"
+            {{- end }}
+            - "--debug={{ .Values.debug }}"
+          ports:
+            - containerPort: {{ .Values.container.httpPort }}
+            - containerPort: {{ .Values.container.grpcPort }}
+          {{- with .Values.extraEnv }}
+          env:
+          {{ toYaml . | indent 12 }}
+          {{- end }}
+          readinessProbe:
+            exec:
+              command: ["/grpc_health_probe", "-addr=:{{ .Values.container.grpcPort }}"]
+            initialDelaySeconds: 5
+          livenessProbe:
+            exec:
+              command: ["/grpc_health_probe", "-addr=:{{ .Values.container.grpcPort }}"]
+            initialDelaySeconds: 5
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+      {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end }}
+      {{- if .Values.tolerations }}
+      tolerations:
+{{ toYaml .Values.tolerations | indent 8 }}
+      {{- end }}
+      {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}
+  {{- end }}
