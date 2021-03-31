@@ -35,28 +35,8 @@ Common labels
 */}}
 {{- define "rode-collector-build.labels" -}}
 helm.sh/chart: {{ include "rode-collector-build.chart" . }}
-{{ include "rode-collector-build.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
-
-{{/*
-Selector labels
-*/}}
-{{- define "rode-collector-build.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "rode-collector-build.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end }}
-
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "rode-collector-build.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "rode-collector-build.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
 {{- end }}
