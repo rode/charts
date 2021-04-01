@@ -305,6 +305,20 @@ entries:
     urls:
     - https://github.com/rode/charts/releases/download/rode-0.0.3/rode-0.0.3.tgz
     version: 0.0.3
+  rode-collector-build:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2021-04-01T13:53:15.38910401Z"
+    description: A Helm chart for a generic Rode build collector. Meant to be deployed alongside Rode
+    digest: d2e66535952a3fd98fc0fd36ad604ec1244b9fcf8f597820e323d54a076da622
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-build
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-build-0.1.0/rode-collector-build-0.1.0.tgz
+    version: 0.1.0
   rode-collector-harbor:
   - apiVersion: v2
     appVersion: v0.0.3
