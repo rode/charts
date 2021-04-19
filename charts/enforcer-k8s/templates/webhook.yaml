@@ -6,7 +6,7 @@
 {{ $tlsCrt := $enforcerCert.Cert | b64enc }}
 {{ $tlsKey := $enforcerCert.Key | b64enc }}
 
-{{- $secret := (lookup "v1" "Secret" .Release.Namespace .Values.webhook.secretName ) }}
+{{- $secret := (lookup "v1" "Secret" .Release.Namespace .Values.tlsSecretName ) }}
 {{- if $secret }}
   {{- $caCrt = index $secret.data "ca.crt" }}
   {{- $tlsCrt = index $secret.data "tls.crt" }}
@@ -16,7 +16,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ .Values.webhook.secretName }}
+  name: {{ .Values.tlsSecretName }}
   labels:
     app: {{ include "enforcer-k8s.fullname" . }}
     chart: "{{ $.Chart.Name }}-{{ $.Chart.Version }}"
@@ -42,7 +42,7 @@ webhooks:
     sideEffects: None
     namespaceSelector:
       matchExpressions:
-        - key: {{ .Values.webhook.namespaceLabel }}
+        - key: {{ .Values.namespaceLabel }}
           operator: Exists
     rules:
       - apiGroups: [ "" ]

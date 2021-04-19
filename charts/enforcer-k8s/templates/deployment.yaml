@@ -29,12 +29,12 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion) )  }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            - "--tls-secret={{ .Values.webhook.secretName }}"
-            - "--policy-id={{ .Values.webhook.policyId }}"
-            - "--rode-host=rode.rode-demo.svc.cluster.local:50051"
+            - "--tls-secret={{ .Values.tlsSecretName }}"
+            - "--policy-id={{ .Values.policyId }}"
+            - "--rode-host={{ .Values.rode.host }}"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
