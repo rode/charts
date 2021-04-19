@@ -1,5 +1,5 @@
 {{ $ca := genCA "svc-cat-ca" 3650 }}
-{{ $enforcerCn := printf "%s.%s.svc" .Release.Name .Release.Namespace }}
+{{ $enforcerCn := printf "%s.%s.svc" (include "enforcer-k8s.fullname" .) .Release.Namespace }}
 {{ $enforcerCert := genSignedCert $enforcerCn nil (list $enforcerCn "localhost") 365 $ca }}
 
 {{ $caCrt := $ca.Cert | b64enc }}
