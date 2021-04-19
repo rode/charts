@@ -1,0 +1,38 @@
+replicaCount: 1
+
+image:
+  repository: enforcer-k8s
+  pullPolicy: Never
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8001
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+webhook:
+  secretName: enforcer-k8s
+  namespaceLabel: enforcer-k8s
+  policyId: 0bc9541d-2663-44e0-a8ee-d14c7a073070

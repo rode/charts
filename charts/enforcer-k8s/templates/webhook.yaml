@@ -1,0 +1,61 @@
+{{ $ca := genCA "svc-cat-ca" 3650 }}
+{{ $enforcerCn := printf "%s.%s.svc" .Release.Name .Release.Namespace }}
+{{ $enforcerCert := genSignedCert $enforcerCn nil (list $enforcerCn "localhost") 365 $ca }}
+
+{{ $caCrt := $ca.Cert | b64enc }}
+{{ $tlsCrt := $enforcerCert.Cert | b64enc }}
+{{ $tlsKey := $enforcerCert.Key | b64enc }}
+
+{{- $secret := (lookup "v1" "Secret" .Release.Namespace .Values.webhook.secretName ) }}
+{{- if $secret }}
+  {{- $caCrt = index $secret.data "ca.crt" }}
+  {{- $tlsCrt = index $secret.data "tls.crt" }}
+  {{- $tlsKey = index $secret.data "tls.key" }}
+{{- end -}}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Values.webhook.secretName }}
+  labels:
+    app: {{ include "enforcer-k8s.fullname" . }}
+    chart: "{{ $.Chart.Name }}-{{ $.Chart.Version }}"
+    release: "{{ $.Release.Name }}"
+  annotations:
+    "helm.sh/hook": "pre-install"
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+type: Opaque
+data:
+  ca.crt: {{ $caCrt }}
+  tls.crt: {{ $tlsCrt }}
+  tls.key: {{ $tlsKey }}
+
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: k8s-enforcer.rode.io
+webhooks:
+  - name: k8s-enforcer.rode.io
+    failurePolicy: Fail
+    matchPolicy: Equivalent
+    sideEffects: None
+    namespaceSelector:
+      matchExpressions:
+        - key: {{ .Values.webhook.namespaceLabel }}
+          operator: Exists
+    rules:
+      - apiGroups: [ "" ]
+        apiVersions: [ "v1" ]
+        operations: [ "CREATE", "UPDATE" ]
+        resources: [ "pods" ]
+        scope: "Namespaced"
+    clientConfig:
+      service:
+        namespace: {{ .Release.Namespace }}
+        name: {{ include "enforcer-k8s.fullname" . }}
+        path: /
+        port: 8001
+      caBundle: {{ $caCrt }}
+    admissionReviewVersions: [ "v1" ]
+    timeoutSeconds: 5
