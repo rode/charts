@@ -37,4 +37,5 @@ rode:
 
 tlsSecretName: enforcer-k8s
 namespaceLabel: enforcer-k8s
-policyId: 0bc9541d-2663-44e0-a8ee-d14c7a073070
+# set policyId to the policy that should be enforced for all pods in the namespace specified by namespaceLabel
+#policyId: 0bc9541d-2663-44e0-a8ee-d14c7a073070
