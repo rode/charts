@@ -1,4 +1,4 @@
-# necessary in order to read the secret containing the TLS config and any image pull secrets
+# necessary in order to read the secret containing the TLS config
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
