@@ -32,7 +32,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion) )  }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            - "--tls-secret={{ .Values.tlsSecretName }}"
+            - "--tls-secret={{ .Release.Namespace }}/{{ .Values.tlsSecretName }}"
             - "--policy-id={{ .Values.policyId }}"
             - "--rode-host={{ .Values.rode.host }}"
           ports:
