@@ -67,5 +67,5 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Test install collectors teardown
-        run: install-test-collectors-enforcers-teardown
+        run: make install-test-collectors-enforcers-teardown
         if: steps.list-changed.outputs.changed == 'true'
