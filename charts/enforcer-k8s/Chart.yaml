@@ -1,7 +1,9 @@
 apiVersion: v2
 name: enforcer-k8s
 description: A Helm chart for `enforcer-k8s`, which applies Rode policies against deployments to Kubernetes.
-
+maintainers:
+  - name: Liatrio
+    email: rode@liatrio.com
 type: application
 version: 0.1.0
 appVersion: 0.1.0
