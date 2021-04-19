@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: enforcer-k8s
+  repository: "ghcr.io/rode/enforcer-k8s"
   pullPolicy: IfNotPresent
   tag: ""
 
