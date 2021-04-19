@@ -37,18 +37,18 @@ spec:
             - "--rode-host=rode.rode-demo.svc.cluster.local:50051"
           ports:
             - name: http
-              containerPort: 8001
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
               scheme: HTTPS
               path: /healthz
-              port: 8001
+              port: {{ .Values.service.port }}
           readinessProbe:
             httpGet:
               scheme: HTTPS
               path: /healthz
-              port: 8001
+              port: {{ .Values.service.port }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

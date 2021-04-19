@@ -55,7 +55,7 @@ webhooks:
         namespace: {{ .Release.Namespace }}
         name: {{ include "enforcer-k8s.fullname" . }}
         path: /
-        port: 8001
+        port: {{ .Values.service.port }}
       caBundle: {{ $caCrt }}
     admissionReviewVersions: [ "v1" ]
     timeoutSeconds: 5
