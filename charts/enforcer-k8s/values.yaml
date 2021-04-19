@@ -1,0 +1,41 @@
+replicaCount: 1
+
+image:
+  repository: "ghcr.io/rode/enforcer-k8s"
+  pullPolicy: IfNotPresent
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8001
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+rode:
+  host: rode:50051
+
+tlsSecretName: enforcer-k8s
+namespaceLabel: enforcer-k8s
+# set policyId to the policy that should be enforced for all pods in the namespace specified by namespaceLabel
+# policyId: 0bc9541d-2663-44e0-a8ee-d14c7a073070

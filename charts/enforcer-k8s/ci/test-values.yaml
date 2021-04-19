@@ -1,0 +1,4 @@
+rode:
+  host: rode-test.rode-test.svc.cluster.local:50051
+  insecure: true
+policyId: 0bc9541d-2663-44e0-a8ee-d14c7a073070

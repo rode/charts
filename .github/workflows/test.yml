@@ -58,14 +58,14 @@ jobs:
         run: make install-test-rode-ui
         if: steps.list-changed.outputs.changed == 'true'
 
-      - name: Test install collectors setup
-        run: make install-test-collectors-setup
+      - name: Test install collectors and enforcers setup
+        run: make install-test-collectors-enforcers-setup
         if: steps.list-changed.outputs.changed == 'true'
 
-      - name: Test install collectors
-        run: make install-test-collectors
+      - name: Test install collectors and enforcers
+        run: make install-test-collectors-enforcers
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Test install collectors teardown
-        run: make install-test-collectors-teardown
+        run: make install-test-collectors-enforcers-teardown
         if: steps.list-changed.outputs.changed == 'true'
