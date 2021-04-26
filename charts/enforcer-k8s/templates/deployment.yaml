@@ -41,6 +41,9 @@ spec:
             - "--registry-insecure-skip-verify={{ .Values.registryInsecureSkipVerify }}"
             - "--k8s-in-cluster={{ .Values.kubernetes.inCluster }}"
             {{- if .Values.kubernetes.configFile }}
+              {{- if .Values.kubernetes.inCluster }}
+                {{- fail "Setting both kubernetes.configFile and kubernetes.inCluster is invalid, use one or the other" }}
+              {{- end }}
             - "--k8s-config-file={{ .Values.kubernetes.configFile }}"
             {{- end }}
           ports:
