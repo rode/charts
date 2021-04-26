@@ -34,7 +34,11 @@ affinity: {}
 
 rode:
   host: rode:50051
+  insecure: false
 
+debug: false
+
+registryInsecureSkipVerify: false
 tlsSecretName: enforcer-k8s
 namespaceLabel: enforcer-k8s
 # set policyId to the policy that should be enforced for all pods in the namespace specified by namespaceLabel
