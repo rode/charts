@@ -39,27 +39,25 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion) ) }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            - "--http-port={{ .Values.container.httpPort }}"
-            - "--grpc-port={{ .Values.container.grpcPort }}"
+            - "--port={{ .Values.service.port }}"
             - "--rode-host={{ .Values.rode.host }}"
             {{- if .Values.rode.insecure }}
             - "--rode-insecure={{ .Values.rode.insecure }}"
             {{- end }}
             - "--debug={{ .Values.debug }}"
           ports:
-            - containerPort: {{ .Values.container.httpPort }}
-            - containerPort: {{ .Values.container.grpcPort }}
+            - containerPort: {{ .Values.service.port }}
           {{- with .Values.extraEnv }}
           env:
           {{ toYaml . | indent 12 }}
           {{- end }}
           readinessProbe:
             exec:
-              command: ["/grpc_health_probe", "-addr=:{{ .Values.container.grpcPort }}"]
+              command: ["/grpc_health_probe", "-addr=:{{ .Values.service.port }}"]
             initialDelaySeconds: 5
           livenessProbe:
             exec:
-              command: ["/grpc_health_probe", "-addr=:{{ .Values.container.grpcPort }}"]
+              command: ["/grpc_health_probe", "-addr=:{{ .Values.service.port }}"]
             initialDelaySeconds: 5
           resources:
 {{ toYaml .Values.resources | indent 12 }}
