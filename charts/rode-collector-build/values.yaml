@@ -13,16 +13,9 @@ podSecurityContext: {}
 
 securityContext: {}
 
-container:
-  grpcPort: 8082
-  httpPort: 8083
 service:
-  grpc:
-    type: ClusterIP
-    port: 8082
-  http:
-    type: ClusterIP
-    port: 8083
+  type: ClusterIP
+  port: 8082
 
 debug: false
 

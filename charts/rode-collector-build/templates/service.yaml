@@ -7,20 +7,13 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.grpc.port }}
-      targetPort: {{ .Values.container.grpcPort }}
-      {{- if and (eq .Values.service.grpc.type "NodePort") (.Values.service.grpc.nodePort) }}
-      nodePort: {{ .Values.service.grpc.nodePort }}
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      {{- if and (eq .Values.service.type "NodePort") (.Values.service.nodePort) }}
+      nodePort: {{ .Values.service.nodePort }}
       {{- end }}
       protocol: TCP
-      name: rode-collector-build-grpc
-    - port: {{ .Values.service.http.port }}
-      targetPort: {{ .Values.container.httpPort }}
-      {{- if and (eq .Values.service.http.type "NodePort") (.Values.service.http.nodePort) }}
-      nodePort: {{ .Values.service.http.nodePort }}
-      {{- end }}
-      protocol: TCP
-      name: rode-collector-build-http
+      name: rode-collector-build
   selector:
     app: {{ template "rode-collector-build.name" . }}
     release: {{ .Release.Name }}
