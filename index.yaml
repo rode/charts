@@ -461,6 +461,20 @@ entries:
     urls:
     - https://github.com/rode/charts/releases/download/rode-collector-harbor-0.0.2/rode-collector-harbor-0.0.2.tgz
     version: 0.0.2
+  rode-collector-tfsec:
+  - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2021-05-19T19:47:01.077731767Z"
+    description: A Helm chart for the tfsec collector, which produces occurrences from a tfsec scan.
+    digest: 5c25c25e8ee8c4673e820064c493b34d3c81d043b3f702799dbbd1887384748d
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-tfsec
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-tfsec-0.1.0/rode-collector-tfsec-0.1.0.tgz
+    version: 0.1.0
   rode-ui:
   - apiVersion: v2
     appVersion: 0.2.0
