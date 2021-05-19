@@ -1,0 +1,9 @@
+apiVersion: v2
+name: rode-collector-tfsec
+description: A Helm chart the tfsec collector, which produces occurrences from a tfsec scan.
+maintainers:
+  - name: Liatrio
+    email: rode@liatrio.com
+type: application
+version: 0.1.0
+appVersion: v0.1.0
