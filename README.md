@@ -10,6 +10,7 @@ This repository contains Helm charts for several tools in the Rode ecosystem.
 | Rode UI | [/charts/rode-ui](https://github.com/rode/charts/tree/main/charts/rode-ui) | [rode/rode-ui](https://github.com/rode/rode-ui) |
 | Rode Harbor Collector | [/charts/rode-collector-harbor](https://github.com/rode/charts/tree/main/charts/rode-collector-harbor) | [rode/collector-harbor](https://github.com/rode/collector-harbor) |
 | Rode Build Collector | [/charts/collector-build](https://github.com/rode/charts/tree/main/charts/rode-collector-build) | [rode/collector-build](https://github.com/rode/collector-build) |
+| Rode tfsec Collector | [/charts/rode-collector-tfsec](https://github.com/rode/charts/tree/main/charts/rode-collector-tfsec) | [rode/collector-tfsec](https://github.com/rode/collector-tfsec) |
 | Rode Kubernetes Enforcer | [/charts/enforcer-k8s](https://github.com/rode/charts/tree/main/charts/enforcer-k8s) | [rode/enforcer-k8s](https://github.com/rode/enforcer-k8s) |
 | Grafeas Elasticsearch | [/charts/grafeas-elasticsearch](https://github.com/rode/charts/tree/main/charts/grafeas-elasticsearch) | [rode/grafeas-elasticsearch](https://github.com/rode/grafeas-elasticsearch) |
 
