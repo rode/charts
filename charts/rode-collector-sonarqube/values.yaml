@@ -1,11 +1,11 @@
-# Default values for rode-collector-harbor.
+# Default values for rode-collector-sonarqube.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: ghcr.io/rode/collector-harbor
+  repository: ghcr.io/rode/collector-sonarqube
   pullPolicy: IfNotPresent
   tag: ""
 
@@ -81,10 +81,4 @@ debug: false
 
 rode:
   host: localhost:50051
-  insecure: false
-
-harbor:
-  host: localhost:8080
-  username: ""
-  password: ""
   insecure: false
