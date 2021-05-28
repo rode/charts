@@ -461,6 +461,19 @@ entries:
     version: 0.1.0
   rode-collector-harbor:
   - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2021-05-28T14:53:52.896125964Z"
+    description: A Helm chart for the Rode Harbor Collector. Meant to be deployed alongside Rode
+    digest: ae60e35c1f4dbf80360791f8ac6a45d3329029898dbb539f33b7d68ce22fff51
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-harbor
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-harbor-0.1.0/rode-collector-harbor-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     appVersion: v0.0.3
     created: "2021-02-01T21:49:30.589803179Z"
     description: A Helm chart for the Rode Harbor Collector. Meant to be deployed alongside Rode
@@ -486,6 +499,20 @@ entries:
     urls:
     - https://github.com/rode/charts/releases/download/rode-collector-harbor-0.0.2/rode-collector-harbor-0.0.2.tgz
     version: 0.0.2
+  rode-collector-sonarqube:
+  - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2021-05-28T14:53:53.022018266Z"
+    description: A Helm chart for the Rode SonarQube Collector. Meant to be deployed alongside Rode
+    digest: 173c6c27407f4acc527422d700fa574b7a59d812b7abf6473385bae0938e6f9f
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-sonarqube
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-sonarqube-0.0.1/rode-collector-sonarqube-0.0.1.tgz
+    version: 0.0.1
   rode-collector-tfsec:
   - apiVersion: v2
     appVersion: v0.1.0
