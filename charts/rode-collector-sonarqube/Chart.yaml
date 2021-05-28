@@ -1,0 +1,9 @@
+apiVersion: v2
+name: rode-collector-sonarqube
+description: A Helm chart for the Rode SonarQube Collector. Meant to be deployed alongside Rode
+maintainers:
+  - name: Liatrio
+    email: rode@liatrio.com
+type: application
+version: 0.0.1
+appVersion: v0.1.0
