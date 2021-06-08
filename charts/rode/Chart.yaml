@@ -4,8 +4,8 @@ name: rode
 maintainers:
   - name: Liatrio
     email: rode@liatrio.com
-version: 0.2.4
-appVersion: 0.9.1
+version: 0.2.5
+appVersion: 0.9.2
 dependencies:
   - name: rode-ui
     repository: https://rode.github.io/charts
