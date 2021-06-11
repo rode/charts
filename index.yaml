@@ -604,6 +604,19 @@ entries:
     version: 0.1.0
   rode-ui:
   - apiVersion: v2
+    appVersion: 0.13.0
+    created: "2021-06-11T20:11:17.494694871Z"
+    description: Web frontend for Rode
+    digest: 587c92f4e8fe3586870da5ce0869e435fbea81e00ad232793a8b1505da0518fb
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-ui
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-ui-0.2.3/rode-ui-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
     appVersion: 0.12.0
     created: "2021-06-07T13:59:27.88197047Z"
     description: Web frontend for Rode
