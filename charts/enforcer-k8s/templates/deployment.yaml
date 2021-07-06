@@ -35,7 +35,7 @@ spec:
             - "--port={{ .Values.service.port }}"
             - "--debug={{ .Values.debug }}"
             - "--tls-secret={{ .Release.Namespace }}/{{ .Values.tlsSecretName }}"
-            - "--policy-id={{ .Values.policyId }}"
+            - "--policy-group={{ .Values.policyGroup }}"
             - "--rode-host={{ .Values.rode.host }}"
             - "--rode-insecure={{ .Values.rode.insecure }}"
             - "--registry-insecure-skip-verify={{ .Values.registryInsecureSkipVerify }}"
