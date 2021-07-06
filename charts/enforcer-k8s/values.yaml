@@ -14,6 +14,13 @@ serviceAccount:
   annotations: {}
   name: ""
 
+rbac:
+  create: true
+
+  # rbac.imagePullSecretNames can be used to restrict the enforcer's cluster-wide access to secrets to a particular list of names
+#  imagePullSecretNames:
+#    - harbor
+
 podAnnotations: {}
 
 podSecurityContext: {}
@@ -44,5 +51,6 @@ namespaceLabel: enforcer-k8s
 kubernetes:
   inCluster: true
   configFile: ""
-# set policyId to the policy that should be enforced for all pods in the namespace specified by namespaceLabel
-# policyId: 0bc9541d-2663-44e0-a8ee-d14c7a073070
+
+# set policyGroup to the policy group that should be evaluated against for all pods in the namespace specified by namespaceLabel
+policyGroup: my-policy-group

@@ -58,4 +58,4 @@ webhooks:
         port: {{ .Values.service.port }}
       caBundle: {{ $caCrt }}
     admissionReviewVersions: [ "v1" ]
-    timeoutSeconds: 5
+    timeoutSeconds: 10

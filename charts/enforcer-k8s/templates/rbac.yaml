@@ -1,4 +1,5 @@
-# necessary in order to read the secret containing the TLS config
+{{- if .Values.rbac.create }}
+# The Role is necessary in order to read the TLS secret within the namespace the enforcer is deployed to
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -20,3 +21,35 @@ roleRef:
   kind: Role
   name: {{ include "enforcer-k8s.fullname" . }}
   apiGroup: rbac.authorization.k8s.io
+---
+# Unfortunately, the ClusterRole is also necessary in order to fetch imagePullSecrets for each pod in order to query the registry API
+# This cluster-wide access to secrets can be trimmed by specifying `rbac.imagePullSecretNames`
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "enforcer-k8s.fullname" . }}
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get"]
+    {{- with .Values.rbac.imagePullSecretNames }}
+    resourceNames:
+      {{- range .}}
+      - {{ . }}
+      {{- end }}
+    {{- end }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "enforcer-k8s.fullname" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "enforcer-k8s.serviceAccountName" . }}
+    apiGroup: ""
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: ClusterRole
+  name: {{ include "enforcer-k8s.fullname" . }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
