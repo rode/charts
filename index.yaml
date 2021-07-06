@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   enforcer-k8s:
   - apiVersion: v2
+    appVersion: 0.4.0
+    created: "2021-07-06T20:27:28.947014417Z"
+    description: A Helm chart for `enforcer-k8s`, which applies Rode policies against deployments to Kubernetes.
+    digest: 983ff67903c956874dfabad39af44f5934d519655fc5fc97dd5e8271b25eed47
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: enforcer-k8s
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/enforcer-k8s-0.3.0/enforcer-k8s-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
     appVersion: 0.3.0
     created: "2021-04-26T18:15:47.927044363Z"
     description: A Helm chart for `enforcer-k8s`, which applies Rode policies against deployments to Kubernetes.
