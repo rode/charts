@@ -81,7 +81,25 @@ debug: false
 
 rode:
   host: localhost:50051
-  insecure: false
+
+  ## disableTransportSecurity will disable GRPC transport security when set to `true`
+  ##
+  disableTransportSecurity: false
+
+  ## Rode authentication settings
+  ## Use rode.auth.oidc.enabled to enable OIDC auth
+  ## Use rode.auth.basic.enabled to enable basic auth
+  ##
+  auth:
+    oidc:
+      enabled: false
+      clientId: ""
+      clientSecret: ""
+      tokenUrl: ""
+    basic:
+      enabled: false
+      username: ""
+      password: ""
 
 harbor:
   host: localhost:8080
