@@ -30,3 +30,23 @@ Create chart name and version as used by the chart label.
 {{- define "rode.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{/*
+Common labels
+*/}}
+{{- define "rode.labels" -}}
+helm.sh/chart: {{ include "rode.chart" . }}
+{{ include "rode.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{/*
+Selector labels
+*/}}
+{{- define "rode.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "rode.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}

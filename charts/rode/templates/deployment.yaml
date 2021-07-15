@@ -3,17 +3,7 @@ kind: Deployment
 metadata:
   name: {{ template "rode.fullname" . }}
   labels:
-    app: {{ template "rode.name" . }}
-    helm.sh/chart: {{ .Chart.Name }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-    {{- with .Values.podLabels }}
-{{ toYaml . | indent 4 }}
-    {{- end }}
-  annotations:
-    {{- with .Values.podAnnotations }}
-{{ toYaml . | indent 4 }}
-    {{- end }}
+    {{- include "rode.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -22,12 +12,19 @@ spec:
       release: {{ .Release.Name }}
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
-        app: {{ template "rode.name" . }}
-        release: {{ .Release.Name }}
+        {{- include "rode.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       securityContext:
-        fsGroup: 65534
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
         - name: wait-for-grafeas
           image: curlimages/curl:7.73.0
@@ -51,7 +48,7 @@ spec:
             - containerPort: {{ .Values.service.port }}
           {{- with .Values.extraEnv }}
           env:
-{{ toYaml . | indent 12 }}
+            {{ toYaml . | indent 12 }}
           {{- end }}
           readinessProbe:
             exec:
@@ -62,16 +59,16 @@ spec:
               command: ["/grpc_health_probe", "-addr=:{{ .Values.service.port }}"]
             initialDelaySeconds: 5
           resources:
-{{ toYaml .Values.resources | indent 12 }}
-    {{- if .Values.nodeSelector }}
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-{{ toYaml .Values.nodeSelector | indent 8 }}
-    {{- end }}
-    {{- if .Values.tolerations }}
-      tolerations:
-{{ toYaml .Values.tolerations | indent 8 }}
-    {{- end }}
-    {{- if .Values.affinity }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
       affinity:
-{{ toYaml .Values.affinity | indent 8 }}
-    {{- end }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
