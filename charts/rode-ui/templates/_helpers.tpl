@@ -62,5 +62,5 @@ Create the name of the service account to use
 {{- end }}
 
 {{- define "rode-ui.authSecretName" }}
-{{ include "rode-ui.fullname" . }}-auth
+{{- include "rode-ui.fullname" . }}-auth
 {{- end }}
