@@ -36,8 +36,13 @@ spec:
               until curl --output /dev/null --silent --fail --max-time 2 {{ .Values.grafeas.host }}/v1beta1/projects; do sleep 1; done;
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion) ) }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion)) }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if or .Values.auth.oidc.enabled .Values.auth.basic.enabled }}
+          envFrom:
+            - secretRef:
+                name: {{ include "rode.fullname" . }}-auth
+          {{- end }}
           args:
             - "--port={{ .Values.service.port }}"
             - "--grafeas-host={{ .Values.grafeas.host }}"
