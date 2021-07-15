@@ -8,6 +8,20 @@ rode:
   # App default is http://localhost:50052
   url: http://rode:50052
 
+  ## Rode authentication settings
+  ## Use rode.auth.oidc.enabled to enable OIDC auth
+  ##
+  auth:
+    oidc:
+      enabled: false
+      clientId: ""
+      clientSecret: ""
+      issuerUrl: ""
+
+    ## appSecret is the encryption key that is used to encrypt session cookies. this will be auto-generated if it isn't set
+    ##
+    appSecret: ""
+
 image:
   # Override once image is created
   repository: ghcr.io/rode/ui
