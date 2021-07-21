@@ -26,6 +26,14 @@ rode:
 ##
 appUrl: http://localhost:3000
 
+## extraEnvVars is a list of extra environment variables to be set on the rode-ui container
+## Example:
+## extraEnvVars:
+##   - name: NODE_TLS_REJECT_UNAUTHORIZED
+##     value: "0"
+##
+extraEnvVars: []
+
 image:
   # Override once image is created
   repository: ghcr.io/rode/ui

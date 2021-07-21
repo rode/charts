@@ -42,6 +42,9 @@ spec:
             value: "{{ .Values.rode.url }}"
           - name: APP_URL
             value: "{{ .Values.appUrl }}"
+          {{- if .Values.extraEnvVars }}
+          {{- toYaml .Values.extraEnvVars | nindent 10 }}
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
