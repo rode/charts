@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "rode-collector-build.fullname" . }}
   labels:
-  {{- include "rode-collector-build.labels" . | nindent 4 }}
+    {{- include "rode-collector-build.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -15,5 +15,4 @@ spec:
       protocol: TCP
       name: rode-collector-build
   selector:
-    app: {{ template "rode-collector-build.name" . }}
-    release: {{ .Release.Name }}
+    {{- include "rode-collector-build.selectorLabels" . | nindent 4 }}
