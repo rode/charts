@@ -26,6 +26,13 @@ rode:
   ##
   disableTransportSecurity: false
 
+  ## Rode authentication settings
+  ## Use rode.auth.proxy.enabled to enable proxy auth
+  ##
+  auth:
+    proxy:
+      enabled: false
+
 ingress:
   enabled: false
   annotations: {}
