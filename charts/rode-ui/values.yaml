@@ -22,6 +22,10 @@ rode:
     ##
     appSecret: ""
 
+## appUrl represents the URL users can use to reach the application in their browser. this is used when redirecting users after signing in via SSO
+##
+appUrl: http://localhost:3000
+
 image:
   # Override once image is created
   repository: ghcr.io/rode/ui

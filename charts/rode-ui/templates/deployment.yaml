@@ -40,6 +40,8 @@ spec:
           env:
           - name: RODE_URL
             value: "{{ .Values.rode.url }}"
+          - name: APP_URL
+            value: "{{ .Values.appUrl }}"
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
