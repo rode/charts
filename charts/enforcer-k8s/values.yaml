@@ -56,6 +56,7 @@ rode:
       clientId: ""
       clientSecret: ""
       tokenUrl: ""
+      tlsInsecureSkipVerify: false
     basic:
       enabled: false
       username: ""
