@@ -41,9 +41,7 @@ spec:
           args:
             - "--port={{ .Values.service.port }}"
             - "--rode-host={{ .Values.rode.host }}"
-            {{- if .Values.rode.insecure }}
-            - "--rode-insecure={{ .Values.rode.insecure }}"
-            {{- end }}
+            - "--rode-insecure-disable-transport-security={{ .Values.rode.disableTransportSecurity }}"
             - "--debug={{ .Values.debug }}"
           ports:
             - containerPort: {{ .Values.service.port }}

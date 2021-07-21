@@ -21,7 +21,10 @@ debug: false
 
 rode:
   host: rode:50051
-  insecure: false
+
+  ## disableTransportSecurity will disable GRPC transport security when set to `true`
+  ##
+  disableTransportSecurity: false
 
 ingress:
   enabled: false
