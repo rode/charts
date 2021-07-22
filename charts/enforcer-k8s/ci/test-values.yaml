@@ -1,4 +1,4 @@
 rode:
   host: rode-test.rode-test.svc.cluster.local:50051
-  insecure: true
-policyGroup: my-policy-group
+  disableTransportSecurity: true
+  policyGroup: my-policy-group

@@ -30,14 +30,15 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion) ) }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
             - "--port={{ .Values.service.port }}"
             - "--rode-host={{ .Values.rode.host }}"
-            {{- if .Values.rode.insecure }}
-            - "--rode-insecure={{ .Values.rode.insecure }}"
+            {{- if .Values.rode.auth.proxy.enabled }}
+            - "--proxy-auth"
             {{- end }}
+            - "--rode-insecure-disable-transport-security={{ .Values.rode.disableTransportSecurity }}"
             - "--debug={{ .Values.debug }}"
           ports:
             - name: http

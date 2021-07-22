@@ -30,13 +30,16 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion)) }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if or .Values.rode.auth.oidc.enabled .Values.rode.auth.basic.enabled }}
+          envFrom:
+            - secretRef:
+                name: {{ include "rode-collector-harbor.fullname" . }}-auth
+          {{- end }}
           args:
             - "--rode-host={{ .Values.rode.host }}"
-            {{- if .Values.rode.insecure }}
-            - "--rode-insecure={{ .Values.rode.insecure }}"
-            {{- end }}
+            - "--rode-insecure-disable-transport-security={{ .Values.rode.disableTransportSecurity }}"
             - "--harbor-host={{ .Values.harbor.host }}"
             {{- if .Values.harbor.username }}
             - "--harbor-username={{ .Values.harbor.username }}"
@@ -46,10 +49,10 @@ spec:
             {{- end }}
             {{- if .Values.harbor.insecure }}
             - "--harbor-insecure={{ .Values.harbor.insecure }}"
-          {{- end }}
+            {{- end }}
             {{- if .Values.debug }}
             - "--debug={{ .Values.debug }}"
-          {{- end }}
+            {{- end }}
           ports:
             - name: http
               containerPort: 8080

@@ -26,11 +26,31 @@ opa:
 elasticsearch:
   host: http://elasticsearch-master:9200
 
+## Rode authentication settings
+## Use auth.oidc.enabled to enable OIDC auth
+## Use auth.basic.enabled to enable basic auth
+##
+auth:
+  oidc:
+    enabled: false
+    issuer: ""
+    requiredAudience: ""
+    roleClaimPath: ""
+    tlsInsecureSkipVerify: false
+  basic:
+    enabled: false
+    username: ""
+    password: ""
+
 debug: false
 
 image:
   repository: "ghcr.io/rode/rode"
   pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
 
 extraEnv: []
 
@@ -38,11 +58,16 @@ service:
   type: ClusterIP
   port: 50051
 
-tolerations: []
-affinity: {}
-podLabels: {}
 nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
 podAnnotations: {}
+
+podSecurityContext: {}
+# fsGroup: 2000
 
 replicaCount: 1
 

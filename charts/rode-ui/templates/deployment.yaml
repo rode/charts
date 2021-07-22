@@ -32,9 +32,19 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion) ) }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.rode.auth.oidc.enabled }}
+          envFrom:
+            - secretRef:
+                name: {{ include "rode-ui.authSecretName" . }}
+          {{- end }}
           env:
           - name: RODE_URL
             value: "{{ .Values.rode.url }}"
+          - name: APP_URL
+            value: "{{ .Values.appUrl }}"
+          {{- if .Values.extraEnvVars }}
+          {{- toYaml .Values.extraEnvVars | nindent 10 }}
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}

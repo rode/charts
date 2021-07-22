@@ -29,15 +29,20 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion) )  }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" ($.Chart.AppVersion)) }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if or .Values.rode.auth.oidc.enabled .Values.rode.auth.basic.enabled }}
+          envFrom:
+            - secretRef:
+                name: {{ include "enforcer-k8s.fullname" . }}-auth
+          {{- end }}
           args:
             - "--port={{ .Values.service.port }}"
             - "--debug={{ .Values.debug }}"
             - "--tls-secret={{ .Release.Namespace }}/{{ .Values.tlsSecretName }}"
-            - "--policy-group={{ .Values.policyGroup }}"
+            - "--policy-group={{ .Values.rode.policyGroup }}"
             - "--rode-host={{ .Values.rode.host }}"
-            - "--rode-insecure={{ .Values.rode.insecure }}"
+            - "--rode-insecure-disable-transport-security={{ .Values.rode.disableTransportSecurity }}"
             - "--registry-insecure-skip-verify={{ .Values.registryInsecureSkipVerify }}"
             - "--k8s-in-cluster={{ .Values.kubernetes.inCluster }}"
             {{- if .Values.kubernetes.configFile }}

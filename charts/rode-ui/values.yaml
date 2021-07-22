@@ -8,6 +8,32 @@ rode:
   # App default is http://localhost:50052
   url: http://rode:50052
 
+  ## Rode authentication settings
+  ## Use rode.auth.oidc.enabled to enable OIDC auth
+  ##
+  auth:
+    oidc:
+      enabled: false
+      clientId: ""
+      clientSecret: ""
+      issuerUrl: ""
+
+    ## appSecret is the encryption key that is used to encrypt session cookies. this will be auto-generated if it isn't set
+    ##
+    appSecret: ""
+
+## appUrl represents the URL users can use to reach the application in their browser. this is used when redirecting users after signing in via SSO
+##
+appUrl: http://localhost:3000
+
+## extraEnvVars is a list of extra environment variables to be set on the rode-ui container
+## Example:
+## extraEnvVars:
+##   - name: NODE_TLS_REJECT_UNAUTHORIZED
+##     value: "0"
+##
+extraEnvVars: []
+
 image:
   # Override once image is created
   repository: ghcr.io/rode/ui

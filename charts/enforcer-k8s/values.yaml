@@ -41,7 +41,33 @@ affinity: {}
 
 rode:
   host: rode:50051
-  insecure: false
+
+  ## disableTransportSecurity will disable GRPC transport security when set to `true`
+  ##
+  disableTransportSecurity: false
+
+  ## Rode authentication settings
+  ## Use rode.auth.oidc.enabled to enable OIDC auth
+  ## Use rode.auth.basic.enabled to enable basic auth
+  ##
+  auth:
+    oidc:
+      enabled: false
+      clientId: ""
+      clientSecret: ""
+      tokenUrl: ""
+      tlsInsecureSkipVerify: false
+      # scopes is a space delimited list of scopes to request when retrieving an access token
+      #
+      scopes: ""
+    basic:
+      enabled: false
+      username: ""
+      password: ""
+
+  ## policyGroup (required) is the name of the policy group that docker images should be evaluated against
+  ##
+  policyGroup: ""
 
 debug: false
 
@@ -51,6 +77,3 @@ namespaceLabel: enforcer-k8s
 kubernetes:
   inCluster: true
   configFile: ""
-
-# set policyGroup to the policy group that should be evaluated against for all pods in the namespace specified by namespaceLabel
-policyGroup: my-policy-group

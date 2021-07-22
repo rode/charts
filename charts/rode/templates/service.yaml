@@ -3,15 +3,11 @@ kind: Service
 metadata:
   name: {{ include "rode.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "rode.name" . }}
-    helm.sh/chart: {{ include "rode.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "rode.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app: {{ template "rode.name" . }}
-    release: {{ .Release.Name }}
+    {{- include "rode.selectorLabels" . | nindent 4 }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
