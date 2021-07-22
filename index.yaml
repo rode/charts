@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   enforcer-k8s:
   - apiVersion: v2
+    appVersion: 0.5.0
+    created: "2021-07-22T21:42:36.443889863Z"
+    description: A Helm chart for `enforcer-k8s`, which applies Rode policies against deployments to Kubernetes.
+    digest: 5a168538df9c71ebf6bcecef3a73d1bd41588e025f9cb9862593b1a7cfbde7da
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: enforcer-k8s
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/enforcer-k8s-0.4.0/enforcer-k8s-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
     appVersion: 0.4.0
     created: "2021-07-06T20:27:28.947014417Z"
     description: A Helm chart for `enforcer-k8s`, which applies Rode policies against deployments to Kubernetes.
@@ -165,6 +178,31 @@ entries:
     - https://github.com/rode/charts/releases/download/grafeas-elasticsearch-0.0.1/grafeas-elasticsearch-0.0.1.tgz
     version: 0.0.1
   rode:
+  - apiVersion: v2
+    appVersion: 0.14.5
+    created: "2021-07-22T21:42:36.579627805Z"
+    dependencies:
+    - condition: rode-ui.enabled
+      name: rode-ui
+      repository: https://rode.github.io/charts
+      version: 0.2.0
+    - condition: grafeas-elasticsearch.enabled
+      name: grafeas-elasticsearch
+      repository: https://rode.github.io/charts
+      version: 0.2.0
+    - condition: opa.enabled
+      name: opa
+      repository: ""
+      version: 0.1.0-local
+    description: A Helm chart for rode
+    digest: ded15bd512bfb2b8e4c7dace395d632d1e6437c91a03871209c3edade9a57d51
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-0.3.0/rode-0.3.0.tgz
+    version: 0.3.0
   - apiVersion: v2
     appVersion: 0.13.0
     created: "2021-07-07T19:37:43.82298592Z"
@@ -572,6 +610,19 @@ entries:
     version: 0.0.3
   rode-collector-build:
   - apiVersion: v2
+    appVersion: 0.3.3
+    created: "2021-07-22T21:42:36.694705745Z"
+    description: A Helm chart for a generic Rode build collector. Meant to be deployed alongside Rode
+    digest: 08a0c6121fe64d7f14496579213ea79ed03bffbc0ee13629f2f97c6ea656b83d
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-build
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-build-0.3.0/rode-collector-build-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
     appVersion: 0.2.0
     created: "2021-05-04T16:13:39.706396123Z"
     description: A Helm chart for a generic Rode build collector. Meant to be deployed alongside Rode
@@ -598,6 +649,19 @@ entries:
     - https://github.com/rode/charts/releases/download/rode-collector-build-0.1.0/rode-collector-build-0.1.0.tgz
     version: 0.1.0
   rode-collector-harbor:
+  - apiVersion: v2
+    appVersion: 0.2.1
+    created: "2021-07-22T21:42:36.801927232Z"
+    description: A Helm chart for the Rode Harbor Collector. Meant to be deployed alongside Rode
+    digest: ab0810f517e9fe8e63196ccca6f979ac92cbf409d393680dcac9f2dfeda8dbde
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-harbor
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-harbor-0.2.0/rode-collector-harbor-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: v0.1.0
     created: "2021-05-28T14:53:52.896125964Z"
@@ -639,6 +703,19 @@ entries:
     version: 0.0.2
   rode-collector-sonarqube:
   - apiVersion: v2
+    appVersion: 0.2.1
+    created: "2021-07-22T21:42:36.943782693Z"
+    description: A Helm chart for the Rode SonarQube Collector. Meant to be deployed alongside Rode
+    digest: ca7785907093d148fd279c72a8a8b7e8ad179a3c7f13a90893f8fbf13cef9c9d
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-sonarqube
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-sonarqube-0.1.0/rode-collector-sonarqube-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     appVersion: v0.1.0
     created: "2021-05-28T14:53:53.022018266Z"
     description: A Helm chart for the Rode SonarQube Collector. Meant to be deployed alongside Rode
@@ -653,6 +730,19 @@ entries:
     version: 0.0.1
   rode-collector-tfsec:
   - apiVersion: v2
+    appVersion: 0.1.1
+    created: "2021-07-22T21:42:37.120255328Z"
+    description: A Helm chart for the tfsec collector, which produces occurrences from a tfsec scan.
+    digest: fc3e992c0ce0ba4786e25b22e9442e4f7094e3373ce7a5f63fba59a8227001a1
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-tfsec
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-tfsec-0.2.0/rode-collector-tfsec-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
     appVersion: v0.1.0
     created: "2021-05-19T19:47:01.077731767Z"
     description: A Helm chart for the tfsec collector, which produces occurrences from a tfsec scan.
@@ -666,6 +756,19 @@ entries:
     - https://github.com/rode/charts/releases/download/rode-collector-tfsec-0.1.0/rode-collector-tfsec-0.1.0.tgz
     version: 0.1.0
   rode-ui:
+  - apiVersion: v2
+    appVersion: 0.17.3
+    created: "2021-07-22T21:42:37.238332726Z"
+    description: Web frontend for Rode
+    digest: 7c1ac5603cbd5059c94bb20c2fac6627034c3c23a6a551729c1181a5eaf795bf
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-ui
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-ui-0.3.0/rode-ui-0.3.0.tgz
+    version: 0.3.0
   - apiVersion: v2
     appVersion: 0.16.0
     created: "2021-07-06T18:07:24.745177008Z"
