@@ -57,6 +57,9 @@ rode:
       clientSecret: ""
       tokenUrl: ""
       tlsInsecureSkipVerify: false
+      # scopes is a space delimited list of scopes to request when retrieving an access token
+      #
+      scopes: ""
     basic:
       enabled: false
       username: ""
