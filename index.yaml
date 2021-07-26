@@ -650,6 +650,19 @@ entries:
     version: 0.1.0
   rode-collector-harbor:
   - apiVersion: v2
+    appVersion: 0.2.2
+    created: "2021-07-26T19:04:21.346139587Z"
+    description: A Helm chart for the Rode Harbor Collector. Meant to be deployed alongside Rode
+    digest: 7b59436423864759c7059b9c0afde0e2d14c2f7d6ed4f2e4149a7514584e8b42
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-harbor
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-harbor-0.2.1/rode-collector-harbor-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     appVersion: 0.2.1
     created: "2021-07-22T21:42:36.801927232Z"
     description: A Helm chart for the Rode Harbor Collector. Meant to be deployed alongside Rode
