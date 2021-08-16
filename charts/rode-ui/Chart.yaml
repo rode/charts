@@ -5,5 +5,5 @@ maintainers:
     email: rode@liatrio.com
 description: Web frontend for Rode
 type: application
-version: 0.3.1
-appVersion: 0.17.4
+version: 0.3.2
+appVersion: 0.17.5
