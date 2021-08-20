@@ -180,6 +180,31 @@ entries:
   rode:
   - apiVersion: v2
     appVersion: 0.14.7
+    created: "2021-08-20T21:54:08.819263453Z"
+    dependencies:
+    - condition: rode-ui.enabled
+      name: rode-ui
+      repository: https://rode.github.io/charts
+      version: 0.2.0
+    - condition: grafeas-elasticsearch.enabled
+      name: grafeas-elasticsearch
+      repository: https://rode.github.io/charts
+      version: 0.2.0
+    - condition: opa.enabled
+      name: opa
+      repository: ""
+      version: 0.1.0-local
+    description: A Helm chart for rode
+    digest: 103e4da39f873a5af1e3d5c6d988c80a102c0669aadcd61d3b37416a6dde7781
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-0.3.3/rode-0.3.3.tgz
+    version: 0.3.3
+  - apiVersion: v2
+    appVersion: 0.14.7
     created: "2021-08-11T12:37:51.554576085Z"
     dependencies:
     - condition: rode-ui.enabled
@@ -819,6 +844,19 @@ entries:
     - https://github.com/rode/charts/releases/download/rode-collector-tfsec-0.1.0/rode-collector-tfsec-0.1.0.tgz
     version: 0.1.0
   rode-ui:
+  - apiVersion: v2
+    appVersion: 0.17.5
+    created: "2021-08-20T21:54:09.004079108Z"
+    description: Web frontend for Rode
+    digest: ad76bbcc492865f56411f24b6f3bf25e06012cc629f74086192a00a76a02355e
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-ui
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-ui-0.3.3/rode-ui-0.3.3.tgz
+    version: 0.3.3
   - apiVersion: v2
     appVersion: 0.17.5
     created: "2021-08-16T18:30:42.085751363Z"
