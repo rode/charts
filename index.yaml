@@ -686,6 +686,19 @@ entries:
   rode-collector-build:
   - apiVersion: v2
     appVersion: 0.3.3
+    created: "2021-08-23T19:53:06.142777621Z"
+    description: A Helm chart for a generic Rode build collector. Meant to be deployed alongside Rode
+    digest: ce95d2cbaca0980ea04fee22f69dde761f345ad5439ee0f402a3f1d6242abdc9
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-build
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-build-0.3.1/rode-collector-build-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
+    appVersion: 0.3.3
     created: "2021-07-22T21:42:36.694705745Z"
     description: A Helm chart for a generic Rode build collector. Meant to be deployed alongside Rode
     digest: 08a0c6121fe64d7f14496579213ea79ed03bffbc0ee13629f2f97c6ea656b83d
@@ -817,6 +830,19 @@ entries:
     - https://github.com/rode/charts/releases/download/rode-collector-sonarqube-0.0.1/rode-collector-sonarqube-0.0.1.tgz
     version: 0.0.1
   rode-collector-tfsec:
+  - apiVersion: v2
+    appVersion: 0.1.1
+    created: "2021-08-23T19:53:06.293612004Z"
+    description: A Helm chart for the tfsec collector, which produces occurrences from a tfsec scan.
+    digest: 36e79aaea9edbcd470b087fe69ba7c7ac82427684c5fc1c853565830b8b8393c
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-tfsec
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-tfsec-0.2.1/rode-collector-tfsec-0.2.1.tgz
+    version: 0.2.1
   - apiVersion: v2
     appVersion: 0.1.1
     created: "2021-07-22T21:42:37.120255328Z"
