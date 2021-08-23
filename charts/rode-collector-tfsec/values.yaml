@@ -34,6 +34,14 @@ service:
   type: ClusterIP
   port: 8083
 
+ingress:
+  enabled: false
+  annotations: {}
+  hosts: []
+#    - host: chart-example.local
+#      paths: []
+  tls: []
+
 resources:
   limits:
     cpu: 128m
