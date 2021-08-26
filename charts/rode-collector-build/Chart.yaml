@@ -5,5 +5,5 @@ maintainers:
   - name: Liatrio
     email: rode@liatrio.com
 type: application
-version: 0.3.1
+version: 0.4.0
 appVersion: 0.3.3

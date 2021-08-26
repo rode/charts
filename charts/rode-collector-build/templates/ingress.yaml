@@ -1,24 +1,26 @@
-{{- if .Values.ingress.enabled -}}
 {{- $fullName := include "rode-collector-build.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
-{{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- $root := .}}
+{{- range $ingressType, $ingressConfig := .Values.ingress }}
+{{- if $ingressConfig.enabled -}}
+{{- if semverCompare ">=1.14-0" $root.Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
 {{- else -}}
 apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  name: {{ $fullName }}-{{ $ingressType }}
   labels:
-    {{- include "rode-collector-build.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
+  {{- include "rode-collector-build.labels" $root | nindent 4 }}
+  {{- with $ingressConfig.annotations }}
   annotations:
-    {{- toYaml . | nindent 4 }}
+  {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  {{- if .Values.ingress.tls }}
+  {{- if $ingressConfig.tls }}
   tls:
-    {{- range .Values.ingress.tls }}
+    {{- range $ingressConfig.tls }}
     - hosts:
         {{- range .hosts }}
         - {{ . | quote }}
@@ -27,7 +29,7 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-    {{- range .Values.ingress.hosts }}
+    {{- range $ingressConfig.hosts }}
     - host: {{ .host | quote }}
       http:
         paths:
@@ -38,4 +40,6 @@ spec:
               servicePort: {{ $svcPort }}
           {{- end }}
     {{- end }}
-  {{- end }}
+{{- end }}
+---
+{{- end }}
