@@ -34,12 +34,18 @@ rode:
       enabled: false
 
 ingress:
-  enabled: false
-  annotations: {}
-  hosts:
-    - host: chart-example.local
-      paths: []
-  tls: []
+  grpc:
+    enabled: false
+    annotations: {}
+    hosts: []
+    tls: []
+  http:
+    enabled: false
+    annotations: {}
+    hosts:
+      - host: chart-example.local
+        paths: []
+    tls: []
 
 resources:
   limits:
