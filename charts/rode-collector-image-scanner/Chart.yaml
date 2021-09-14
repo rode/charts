@@ -1,0 +1,9 @@
+apiVersion: v2
+name: rode-collector-image-scanner
+description: A Helm chart for the image scanner collector, which produces occurrences from a image scan.
+maintainers:
+  - name: Liatrio
+    email: rode@liatrio.com
+type: application
+version: 0.2.1
+appVersion: 0.1.1
