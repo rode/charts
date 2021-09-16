@@ -840,6 +840,20 @@ entries:
     urls:
     - https://github.com/rode/charts/releases/download/rode-collector-harbor-0.0.2/rode-collector-harbor-0.0.2.tgz
     version: 0.0.2
+  rode-collector-image-scanner:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2021-09-16T20:52:44.521299523Z"
+    description: A Helm chart for the image scanner collector, which produces occurrences from a image scan.
+    digest: f840cccaae42ebe2a9864191c436fc2861a1110a850ee1566414306343d13ba9
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-image-scanner
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-image-scanner-0.1.0/rode-collector-image-scanner-0.1.0.tgz
+    version: 0.1.0
   rode-collector-sonarqube:
   - apiVersion: v2
     appVersion: 0.2.1
