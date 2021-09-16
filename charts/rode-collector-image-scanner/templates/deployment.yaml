@@ -62,7 +62,7 @@ spec:
           args:
             - "server"
             - "--listen"
-            - "0.0.0.0:{{ .Values.trivy.port }}"
+            - "127.0.0.1:{{ .Values.trivy.port }}"
           ports:
             - name: http
               containerPort: {{ .Values.trivy.port }}
