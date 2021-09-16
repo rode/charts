@@ -62,11 +62,21 @@ spec:
           args:
             - "server"
             - "--listen"
-            - "127.0.0.1:{{ .Values.trivy.port }}"
+            - "0.0.0.0:{{ .Values.trivy.port }}"
           ports:
             - name: http
               containerPort: {{ .Values.trivy.port }}
               protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.trivy.port }}
+            initialDelaySeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.trivy.port }}
+            initialDelaySeconds: 10
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
