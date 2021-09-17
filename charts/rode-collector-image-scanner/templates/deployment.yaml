@@ -20,6 +20,15 @@ spec:
       labels:
         {{- include "rode-collector-image-scanner.selectorLabels" . | nindent 8 }}
     spec:
+      volumes:
+        - name: docker-config
+          projected:
+            sources:
+              - secret:
+                  name: {{ .Values.dockerConfigSecret }}
+                  items:
+                    - key: .dockerconfigjson
+                      path: config.json
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -44,6 +53,9 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          volumeMounts:
+            - name: docker-config
+              mountPath: /home/nonroot/.docker
           readinessProbe:
             exec:
               command: ["/grpc_health_probe", "-addr=:{{ .Values.service.port }}"]
