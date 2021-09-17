@@ -11,6 +11,8 @@ trivy:
     repository: ghcr.io/aquasecurity/trivy
     tag: 0.19.2
 
+dockerConfigSecret: ""
+
 debug: false
 
 rode:
