@@ -30,7 +30,7 @@ spec:
                   items:
                     - key: .dockerconfigjson
                       path: config.json
-      {{- end -}}
+      {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -59,7 +59,7 @@ spec:
           volumeMounts:
             - name: docker-config
               mountPath: /home/nonroot/.docker
-          {{- end -}}
+          {{- end }}
           readinessProbe:
             exec:
               command: ["/grpc_health_probe", "-addr=:{{ .Values.service.port }}"]
