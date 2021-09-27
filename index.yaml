@@ -842,6 +842,19 @@ entries:
     version: 0.0.2
   rode-collector-image-scanner:
   - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2021-09-27T16:24:46.82551275Z"
+    description: A Helm chart for the image scanner collector, which produces occurrences from a image scan.
+    digest: b56d3ff7211b56abd5076c26ca093a50c90e4a1f525ce8e6e64c9f4f144864ce
+    maintainers:
+    - email: rode@liatrio.com
+      name: Liatrio
+    name: rode-collector-image-scanner
+    type: application
+    urls:
+    - https://github.com/rode/charts/releases/download/rode-collector-image-scanner-0.1.2/rode-collector-image-scanner-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: 0.1.1
     created: "2021-09-17T14:32:26.324719579Z"
     description: A Helm chart for the image scanner collector, which produces occurrences from a image scan.
